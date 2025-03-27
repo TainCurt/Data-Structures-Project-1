@@ -72,3 +72,18 @@ void DynamicArray::add_first(int value)
     
 }
 
+void DynamicArray::pop_first()
+{
+    if (size > 0)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            array[i] = array[i+1];
+        }
+        size--;
+    }
+    
+}
+
+
+
