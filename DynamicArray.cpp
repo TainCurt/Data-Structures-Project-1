@@ -31,11 +31,44 @@ void DynamicArray::doubleArray()
     
 }
 
-void DynamicArray::add_back()
+void DynamicArray::add_back(int value)
 {
-    if()
+    if(size == capacity)
     {
-
+        doubleArray();
     }
+
+    size++;
+    array[size] = value;
+}
+
+void DynamicArray::pop_back()
+{
+    if(size > 0)
+    {
+        size--;
+    }
+}
+
+void DynamicArray::add_first(int value)
+{
+    if(size == capacity)
+    {
+        doubleArray();
+    }
+
+    if (size == 0)
+    {
+        array[0] = value;
+        size++;
+    }
+
+    for (int i = size; i < 0; i--)
+    {
+        array[i] = array[i-1];
+    }
+    array[0] = value;
+    size++;
+    
 }
 

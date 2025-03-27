@@ -14,12 +14,12 @@ class DynamicArray
     ~DynamicArray();
     int getsize();
     int getcapacity();
-    void add_back();
+    void add_back(int value);
     void pop_back();
-    void add_at();
-    void pop_at();
-    void add_first();
+    void add_first(int value);
     void pop_first();
+    void add_at(int value, int position);
+    void pop_at(int position);
     void doubleArray();
     int search(int number);
 
