@@ -1,4 +1,4 @@
-#include "DynamicArray.hpp"
+#include "DynamicArray.h"
 
 DynamicArray::DynamicArray() : capacity(0), size(0), array(nullptr) {}
 

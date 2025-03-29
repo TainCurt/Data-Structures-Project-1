@@ -25,5 +25,6 @@ class LinkedList
     void add_at(int value, int key);
     void pop_at(int key);
     bool is_empty();
+    void show();
 
 };

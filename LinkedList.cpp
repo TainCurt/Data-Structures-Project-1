@@ -1,5 +1,5 @@
-#include "LinkedList.hpp"
-
+#include "LinkedList.h"
+#include <iostream>
 LinkedList::LinkedList() : head(nullptr), tail(nullptr) {}
 
 LinkedList::~LinkedList()
@@ -15,11 +15,7 @@ LinkedList::~LinkedList()
 
 bool LinkedList::is_empty()
 {
-    if (head == nullptr)
-    {
-        return 1;
-    }
-    
+   return head == nullptr;
 }
 
 void LinkedList::add_first(int value)
@@ -29,14 +25,30 @@ void LinkedList::add_first(int value)
     newNode->next = head;
     head = newNode;
 
+    if (tail == nullptr) { // Jeśli lista była pusta, ustaw również tail
+        tail = head;
+    }
+
 }
 
-
+void LinkedList::show(){
+    Node* temp = head;
+    while(temp != nullptr){
+      std::cout << temp->data << "->";
+      temp = temp->next;
+    }
+    std::cout << "NULL" <<std::endl;
+  }
 void LinkedList::pop_first()
 {
+     
     Node* temp = head;
-    head = temp->next;
+    head = head->next;
     delete temp;
+    if(is_empty())
+    {
+        tail = nullptr;
+    }
 }
 
 
@@ -44,16 +56,26 @@ void LinkedList::add_back(int value)
 {
     Node* newNode = new Node;
     newNode->data = value;
-    Node* temp = head;
-    while(temp->next != nullptr)
+    newNode->next = nullptr;
+    if(is_empty())
     {
-        temp = temp->next;
+        head = tail = newNode;
     }
-    temp->next = newNode;
+    tail->next = newNode;
+    tail = newNode;
 }
 
 void LinkedList::pop_back()
 {
+
+    if(is_empty());
+
+    if(head == tail)
+    {
+        delete head;
+        head = tail = nullptr;
+    }
+
     Node* temp = head;
     while(temp->next != tail )
     {
@@ -97,4 +119,11 @@ void LinkedList::add_at(int value, int key)
     newNode->next = temp->next;
     temp->next = newNode;
 }
-
+/*
+void LinkedList::pop_at(int key)
+{
+    int i = 1;
+    Node* temp = head;
+    while(temp)
+}
+*/
