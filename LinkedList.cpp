@@ -137,6 +137,7 @@ void LinkedList::pop_at(int key) //chyba działa, sprawdź
     if (key == 1)
     {
       pop_first();
+      return;
     }
     
     
