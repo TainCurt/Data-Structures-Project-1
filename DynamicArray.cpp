@@ -62,13 +62,6 @@ void DynamicArray::add_first(int value)
         doubleArray();
     }
 
-    /*
-    if (size == 0)
-    {
-        array[0] = value;
-    }
-    */
-
     for (int i = size; i > 0; i--)
     {
         array[i] = array[i-1];
@@ -96,7 +89,35 @@ void DynamicArray::show()
 {
     for (int i = 0; i < size; i++)
     {
-        std::cout << array[i] << std::endl;
+        std::cout << " -> "<< array[i];
     }
     
+}
+
+void DynamicArray::add_at(int value, int posiotion)
+{
+    if(size == capacity)
+    {
+        doubleArray();
+    }
+
+    for (int i = size; i > posiotion-1; i--)
+    {
+        array[i] = array[i-1];
+    }
+    array[posiotion-1] = value;
+    size++;
+}
+
+
+void DynamicArray::pop_at(int position)
+{
+    if (size > 0)
+    {
+        for (int i = position-1; i < size; i++)
+        {
+            array[i] = array[i+1];
+        }
+        size--;
+    }
 }
