@@ -22,5 +22,5 @@ class DynamicArray
     void pop_at(int position);
     void doubleArray();
     int search(int number);
-
+    void show();
 };

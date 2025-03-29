@@ -1,7 +1,9 @@
 #include "DynamicArray.h"
+#include <iostream>
 
 DynamicArray::DynamicArray() : capacity(0), size(0), array(nullptr) {}
 
+/*
 DynamicArray::DynamicArray(int capacity)
 {
     this->capacity = capacity;
@@ -9,6 +11,7 @@ DynamicArray::DynamicArray(int capacity)
     size = 0;
 }
 
+*/
 DynamicArray::~DynamicArray()
 {
     delete[] array;
@@ -20,7 +23,9 @@ int DynamicArray::getsize() { return size; }
 
 void DynamicArray::doubleArray()
 {
-    capacity *= 2;
+    capacity = (size == 0 ) ? 1 : capacity*2;
+    
+    //capacity *= 2;
     int* temp = new int[capacity];
     for (int i = 0; i < size; i++)
     {
@@ -38,8 +43,8 @@ void DynamicArray::add_back(int value)
         doubleArray();
     }
 
-    size++;
     array[size] = value;
+    size++;
 }
 
 void DynamicArray::pop_back()
@@ -57,13 +62,14 @@ void DynamicArray::add_first(int value)
         doubleArray();
     }
 
+    /*
     if (size == 0)
     {
         array[0] = value;
-        size++;
     }
+    */
 
-    for (int i = size; i < 0; i--)
+    for (int i = size; i > 0; i--)
     {
         array[i] = array[i-1];
     }
@@ -86,4 +92,11 @@ void DynamicArray::pop_first()
 }
 
 
-
+void DynamicArray::show()
+{
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << array[i] << std::endl;
+    }
+    
+}
