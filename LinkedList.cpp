@@ -38,7 +38,8 @@ void LinkedList::show(){
       temp = temp->next;
     }
     std::cout << "NULL" <<std::endl;
-  }
+}
+
 void LinkedList::pop_first()
 {
      
@@ -68,12 +69,16 @@ void LinkedList::add_back(int value)
 void LinkedList::pop_back()
 {
 
-    if(is_empty());
+    if(is_empty())
+    {
+        return;
+    }
 
     if(head == tail)
     {
         delete head;
         head = tail = nullptr;
+        return;
     }
 
     Node* temp = head;
@@ -119,11 +124,37 @@ void LinkedList::add_at(int value, int key)
     newNode->next = temp->next;
     temp->next = newNode;
 }
-/*
-void LinkedList::pop_at(int key)
+
+void LinkedList::pop_at(int key) //chyba działa, sprawdź 
 {
-    int i = 1;
+    if(is_empty());
+
+    if(key < 0)
+    {
+        return;
+    }
+
+    if (key == 1)
+    {
+      pop_first();
+    }
+    
+    
     Node* temp = head;
-    while(temp)
+    int i = 1;
+
+    while (temp != nullptr && i < key - 1) {
+        temp = temp->next;
+        i++;
+    }
+
+    Node* toDelete = temp->next;
+    temp->next = toDelete->next;
+    if (toDelete == tail)
+    {
+        tail = temp;
+    }
+    
+    delete toDelete;
+
 }
-*/
