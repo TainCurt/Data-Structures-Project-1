@@ -43,13 +43,21 @@ void LinkedList::show(){
 void LinkedList::pop_first()
 {
      
+    if(is_empty())
+    {
+        return;
+    }
+
+    if(head == tail)
+    {
+        delete head;
+        head = tail = nullptr;
+        return;
+    }
+
     Node* temp = head;
     head = head->next;
     delete temp;
-    if(is_empty())
-    {
-        tail = nullptr;
-    }
 }
 
 

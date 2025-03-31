@@ -78,10 +78,45 @@ void DoublyLinkedList::add_back(int value)
 }
 
 
-/*
-void DoublyLinkedList::pop_back()
+void DoublyLinkedList::pop_first()
 {
+    if (is_empty())
+    {
+        return;
+    }
+
+    if(head == tail)
+    {
+        delete head;
+        head = tail = nullptr;
+        return;
+    }
+
+    Dnode* temp = head;
+    head = head->next;
+    head->prev = nullptr;
+    delete temp;
     
 }
 
-*/
+
+void DoublyLinkedList::pop_back()
+{
+    if (is_empty())
+    {
+        return;
+    }
+
+    if(head == tail)
+    {
+        delete head;
+        head = tail = nullptr;
+        return;
+    }
+
+    Dnode* temp = tail->prev;
+    temp->next = nullptr;
+    delete tail;
+    tail = temp;
+    
+}
