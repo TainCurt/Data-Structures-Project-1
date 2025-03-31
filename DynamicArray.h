@@ -21,6 +21,6 @@ class DynamicArray
     void add_at(int value, int position);
     void pop_at(int position);
     void doubleArray();
-    int search(int number);
+    bool search(int value);
     void show();
 };

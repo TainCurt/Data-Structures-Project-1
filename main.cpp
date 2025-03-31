@@ -25,8 +25,6 @@ int main()
     std::cout << std::endl;
     Array.pop_back();
     Array.show();
-    */
-    DynamicArray Array;
     Array.add_first(1);
     Array.add_first(2);
     Array.add_first(3);
@@ -38,13 +36,33 @@ int main()
     Array.add_first(9);
     Array.show();
     std::cout << std::endl;
-
+    
     Array.add_at(11111111, 3);
     Array.show();
     std::cout << std::endl;
     Array.pop_at(3);
     Array.show();
-
+    std::cout << std::endl;
+    
+    if(Array.search(4))
+    {
+        std::cout<< "true";
+        }
+        */
+       
+       LinkedList list;
+       list.add_first(3);
+       list.add_first(1);
+       list.add_first(1);
+       list.add_first(1);
+       list.add_first(1);
+       list.add_first(1);
+       list.add_first(1);
+       list.add_first(1);
+       list.add_first(1);
+       list.add_first(2);
+       list.add_back(4);
+       list.show();
 
     //std::cout << Array.getsize() << std::endl;
     //std::cout << Array.getcapacity();
