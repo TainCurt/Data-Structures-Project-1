@@ -1,19 +1,20 @@
 #pragma once
 
-class Node
+class Dnode
 {
     public:
     int data;
-    Node* next;
-    Node* prev;
+    Dnode* next;
+    Dnode* prev;
 
-    Node() : data(0), next(nullptr), prev(nullptr) {}
+    Dnode() : data(0), next(nullptr), prev(nullptr) {}
 };
 
 class DoublyLinkedList
 {
     private:
-    Node* head;
+    Dnode* head;
+    Dnode* tail;
 
     public:
     DoublyLinkedList();
