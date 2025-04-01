@@ -170,3 +170,18 @@ void LinkedList::pop_at(int key) //chyba działa, sprawdź
     delete toDelete;
 
 }
+
+
+bool LinkedList::search(int value)
+{
+    Node* temp = head;
+    while(temp != nullptr)
+    {
+        if(temp->data == value)
+        {
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
+}

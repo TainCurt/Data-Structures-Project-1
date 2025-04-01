@@ -10,7 +10,7 @@ class Dnode
     Dnode() : data(0), next(nullptr), prev(nullptr) {}
 };
 
-class DoublyLinkedList
+class DoublyLinkedList 
 {
     private:
     Dnode* head;
@@ -26,7 +26,7 @@ class DoublyLinkedList
     void add_at(int value, int key);
     void pop_at(int key);
     bool is_empty();
-    bool search();
+    bool search(int value);
     void show();
 
 

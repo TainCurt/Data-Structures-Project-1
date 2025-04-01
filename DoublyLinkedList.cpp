@@ -189,3 +189,18 @@ void DoublyLinkedList::pop_at(int key)
     
     
 }
+
+
+bool DoublyLinkedList::search(int value)
+{
+    Dnode* temp = head;
+    while(temp != nullptr)
+    {
+        if(temp->data == value)
+        {
+            return true;
+        }
+        temp = temp->next;
+    }
+    return false;
+}

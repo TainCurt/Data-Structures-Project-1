@@ -25,6 +25,7 @@ int main()
    list.pop_at(3);
    list.show();
 
+   cout << list.search(99);
 
 
 
