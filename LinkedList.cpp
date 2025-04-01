@@ -135,7 +135,10 @@ void LinkedList::add_at(int value, int key)
 
 void LinkedList::pop_at(int key) //chyba działa, sprawdź 
 {
-    if(is_empty());
+    if(is_empty())
+    {
+        return;
+    }
 
     if(key < 0)
     {

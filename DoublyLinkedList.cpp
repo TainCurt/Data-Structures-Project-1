@@ -120,3 +120,72 @@ void DoublyLinkedList::pop_back()
     tail = temp;
     
 }
+
+void DoublyLinkedList::add_at(int value, int key)
+{
+    if(key < 0)
+    {
+        return;
+    }
+    
+    if(key == 1)
+    {
+        add_first(value);
+        return;
+    }
+    
+    Dnode* temp = head;
+    for (int i = 1; i < key-1; i++)
+    {
+        temp = temp->next;
+    }
+
+    Dnode* newNode = new Dnode();
+    newNode->data = value;
+    if (temp->next)
+    {
+        temp->next->prev = newNode;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+    newNode->prev = temp;
+    
+    
+}
+
+void DoublyLinkedList::pop_at(int key)
+{
+    if(is_empty())
+    {
+        return;
+    }
+
+    if(key < 0)
+    {
+        return;
+    }
+
+    if (key == 1)
+    {
+      pop_first();
+      return;
+    }
+
+     
+    Dnode* temp = head;
+    int i = 1;
+
+    while (temp != nullptr && i < key - 1) {
+        temp = temp->next;
+        i++;
+    }
+    Dnode* toDelete = temp->next;
+    temp->next = toDelete->next;
+    if (toDelete->next)
+    {
+        toDelete->next->prev = temp;
+    }
+    delete toDelete;
+    
+    
+}

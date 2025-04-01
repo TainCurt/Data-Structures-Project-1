@@ -10,7 +10,7 @@ class DynamicArray
     
     public:
     DynamicArray();
-    DynamicArray(int capacity);
+   // DynamicArray(int capacity);
     ~DynamicArray();
     int getsize();
     int getcapacity();
