@@ -23,33 +23,32 @@ int DynamicArray::getsize() { return size; }
 
 void DynamicArray::doubleArray()
 {
-    capacity = (size == 0 ) ? 1 : capacity*2;
-    
-    //capacity *= 2;
-    int* temp = new int[capacity];
+    capacity = (size == 0) ? 1 : capacity * 2;
+
+    // capacity *= 2;
+    int *temp = new int[capacity];
     for (int i = 0; i < size; i++)
     {
-        temp[i] = array [i];
+        temp[i] = array[i];
     }
     delete[] array;
     array = temp;
-    
 }
 
 void DynamicArray::add_back(int value)
 {
-    if(size == capacity)
+    if (size == capacity)
     {
         doubleArray();
     }
 
-    array[size] = value;
     size++;
+    array[size] = value;
 }
 
 void DynamicArray::pop_back()
 {
-    if(size > 0)
+    if (size > 0)
     {
         size--;
     }
@@ -57,18 +56,17 @@ void DynamicArray::pop_back()
 
 void DynamicArray::add_first(int value)
 {
-    if(size == capacity)
+    if (size == capacity)
     {
         doubleArray();
     }
 
     for (int i = size; i > 0; i--)
     {
-        array[i] = array[i-1];
+        array[i] = array[i - 1];
     }
     array[0] = value;
     size++;
-    
 }
 
 void DynamicArray::pop_first()
@@ -77,63 +75,57 @@ void DynamicArray::pop_first()
     {
         for (int i = 0; i < size; i++)
         {
-            array[i] = array[i+1];
+            array[i] = array[i + 1];
         }
         size--;
     }
-    
 }
-
 
 void DynamicArray::show()
 {
     for (int i = 0; i < size; i++)
     {
-        std::cout << " -> "<< array[i];
+        std::cout << " -> " << array[i];
     }
-    
 }
 
 void DynamicArray::add_at(int value, int posiotion)
 {
-    if(size == capacity)
+    if (size == capacity)
     {
         doubleArray();
     }
 
-    for (int i = size; i > posiotion-1; i--)
+    for (int i = size; i > posiotion - 1; i--)
     {
-        array[i] = array[i-1];
+        array[i] = array[i - 1];
     }
-    array[posiotion-1] = value;
+    array[posiotion - 1] = value;
     size++;
 }
-
 
 void DynamicArray::pop_at(int position)
 {
     if (size > 0)
     {
-        for (int i = position-1; i < size; i++)
+        for (int i = position - 1; i < size; i++)
         {
-            array[i] = array[i+1];
+            array[i] = array[i + 1];
         }
         size--;
     }
 }
-
 
 bool DynamicArray::search(int value)
 {
 
     for (int i = 0; i < size; i++)
     {
-        if(array[i] == value)
+        if (array[i] == value)
         {
-            
+
             return true;
         }
     }
     return false;
-    
 }
