@@ -172,16 +172,30 @@ void LinkedList::pop_at(int key) //chyba działa, sprawdź
 }
 
 
-bool LinkedList::search(int value)
+void LinkedList::search(int value)
 {
     Node* temp = head;
-    while(temp != nullptr)
+    std::vector<int> positions;
+    int index = 0;
+
+    while (temp != nullptr)
     {
-        if(temp->data == value)
+        if (temp->data == value)
         {
-            return true;
+            positions.push_back(index);
         }
         temp = temp->next;
+        index++;
     }
-    return false;
+
+    if (positions.empty()) {
+        cout << "Value " << value << " not found in this list.\n";
+    }
+    else {
+        cout << "Value " << value << " found at positions:\n";
+        for (int pos : positions) {
+            cout << pos << " ";
+        }
+        cout << endl;
+    }
 }
