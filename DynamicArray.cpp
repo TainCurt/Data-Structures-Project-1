@@ -116,16 +116,22 @@ void DynamicArray::pop_at(int position)
     }
 }
 
-bool DynamicArray::search(int value)
+void DynamicArray::search(int value)
 {
-
+    vector<int> positions;
     for (int i = 0; i < size; i++)
     {
         if (array[i] == value)
         {
-
-            return true;
+            positions.push_back(i);
         }
     }
-    return false;
+    if (positions.empty()) { cout << "Value " << value << " not found in this list \n"; }
+    else {
+        cout << "Value " << value << " found at positions:\n";
+        for (int pos : positions) {
+            cout << pos << " ";
+        }
+        cout << endl;
+    }
 }
