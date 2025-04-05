@@ -42,8 +42,8 @@ void DynamicArray::add_back(int value)
         doubleArray();
     }
 
-    size++;
     array[size] = value;
+    size++;
 }
 
 void DynamicArray::pop_back()
