@@ -1,5 +1,8 @@
 #include "DynamicArray.h"
 #include <iostream>
+#include <vector>
+
+using namespace std;
 
 DynamicArray::DynamicArray() : capacity(0), size(0), array(nullptr) {}
 
@@ -126,12 +129,17 @@ void DynamicArray::search(int value)
             positions.push_back(i);
         }
     }
-    if (positions.empty()) { cout << "Value " << value << " not found in this list \n"; }
-    else {
-        cout << "Value " << value << " found at positions:\n";
-        for (int pos : positions) {
-            cout << pos << " ";
-        }
-        cout << endl;
+    if (positions.empty())
+    {
+        // cout << "Value " << value << " not found in this list \n";
+    }
+    else
+    {
+        // cout << "Value " << value << " found at positions:\n";
+        // for (int pos : positions)
+        // {
+        //    cout << pos << " ";
+        // }
+        // cout << endl;
     }
 }

@@ -116,6 +116,8 @@ vector<unique_ptr<DoublyLinkedList>> set_doubly_linked_list(vector<int> commonDa
 
 int main()
 {
+   // vector<int> commonData = set_common_data(40000);
+
    /*
    int data_choice = 0;
    int size = 0;
@@ -131,299 +133,366 @@ int main()
 
    // vector<int> commonData = set_common_data(130000);
    vector<int> commonData;
-   /*
-      int k = 5000;
-      do
-      {
-         long long fin_dob_time = 0;
-         long long test_time_dob = 0;
-         // long long fin_lis_time = 0;
-         // long long test_time_lis = 0;:
-         //  long long fin_arr_time = 0;
-         //  long long test_time_arr = 0;
-
-         load_data(commonData, k, "data.txt");
-         for (int j = 0; j < 10; j++)
-         {
-            // vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
-            // vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
-            vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
-            for (int i = 0; i < 10; i++)
-            {
-               // auto start = high_resolution_clock::now();
-               // arrays[i]->add_first(1); // Dodajemy element na początek
-               // auto stop = high_resolution_clock::now();
-               // test_time_arr += duration_cast<nanoseconds>(stop - start).count();
-
-               // auto start1 = high_resolution_clock::now();
-               // lists[i]->add_first(1); // Dodajemy element na początek
-               // auto stop1 = high_resolution_clock::now();
-               // test_time_lis += duration_cast<nanoseconds>(stop1 - start1).count();
-
-               auto start2 = high_resolution_clock::now();
-               doubly[i]->add_first(1); // Dodajemy element na początek
-               auto stop2 = high_resolution_clock::now();
-               test_time_dob += duration_cast<nanoseconds>(stop2 - start2).count();
-            }
-         }
-         // fin_arr_time += test_time_arr; // Dodajemy czas tej iteracji do ogólnego czasu
-         // fin_lis_time += test_time_lis; // Dodajemy czas tej iteracji do ogólnego czasu
-         fin_dob_time += test_time_dob; // Dodajemy czas tej iteracji do ogólnego czasu
-
-         // Wyświetlamy całkowity czas
-         // cout << "DYNAMIC ARRAY ADD FIRST: " << fin_arr_time << " nanoseconds" << endl;
-         // cout << "LINKED LIST ADD FIRST: " << fin_lis_time << " nanoseconds" << endl;
-         cout << "DOUBLY LINKED ADD FIRST: " << fin_dob_time << " nanoseconds" << endl;
-         k += 5000;
-      } while (k <= 110000);
-   */
-
-   cout << endl;
-
    int k = 5000;
+   /*
+
+
    do
    {
-      long long fin_lis_timeb = 0;
-      long long test_time_lisb = 0;
-      long long test_time_dobb = 0;
-      long long fin_dob_timeb = 0;
-      long long fin_arr_timeb = 0;
-      long long test_time_arrb = 0;
+
       load_data(commonData, k, "data.txt");
-      for (int j = 0; j < 10; j++)
+
+      long long fin_arr_time = 0;
+      long long test_time_arr = 0;
+      vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
+      for (int i = 0; i < 10; i++)
       {
-         vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
-         vector<unique_ptr<LinkedList>> linked_lists = set_linked_list(commonData);
-         vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
-         for (int i = 0; i < 10; i++)
-         {
-            auto start = high_resolution_clock::now();
-            arrays[i]->add_back(1); // Dodajemy element na początek
-            auto stop = high_resolution_clock::now();
-            test_time_arrb += duration_cast<nanoseconds>(stop - start).count();
-
-            auto start1 = high_resolution_clock::now();
-            linked_lists[i]->add_back(1); // Dodajemy element na początek
-            auto stop1 = high_resolution_clock::now();
-            test_time_lisb += duration_cast<nanoseconds>(stop1 - start1).count();
-
-            auto start2 = high_resolution_clock::now();
-            doubly[i]->add_back(1); // Dodajemy element na początek
-            auto stop2 = high_resolution_clock::now();
-            test_time_dobb += duration_cast<nanoseconds>(stop2 - start2).count();
-         }
+         auto start = high_resolution_clock::now();
+         arrays[i]->add_first(1); // Dodajemy element na początek
+         auto stop = high_resolution_clock::now();
+         test_time_arr += duration_cast<nanoseconds>(stop - start).count();
       }
-      fin_arr_timeb += test_time_arrb; // Dodajemy czas tej iteracji do ogólnego czasu
-      fin_lis_timeb += test_time_lisb; // Dodajemy czas tej iteracji do ogólnego czasu
-      fin_dob_timeb += test_time_dobb; // Dodajemy czas tej iteracji do ogólnego czasu
+      fin_arr_time += test_time_arr; // Dodajemy czas tej iteracji do ogólnego czasu
+      // cout << "DYNAMIC ARRAY ADD FIRST: " << endl;
+      cout << fin_arr_time << endl;
 
-      // Wyświetlamy całkowity czas
-      cout << "DYNAMIC ARRAY ADD BACK: " << fin_arr_timeb << " nanoseconds" << endl;
-      cout << "LINKED LIST ADD BACK: " << fin_lis_timeb << " nanoseconds" << endl;
-      cout << "DOUBLY LINKED ADD BACK: " << fin_dob_timeb << " nanoseconds" << endl;
+      long long fin_lis_time = 0;
+      long long test_time_lis = 0;
+      vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
+      for (int i = 0; i < 10; i++)
+      {
+         auto start1 = high_resolution_clock::now();
+         lists[i]->add_first(1); // Dodajemy element na początek
+         auto stop1 = high_resolution_clock::now();
+         test_time_lis += duration_cast<nanoseconds>(stop1 - start1).count();
+      }
+      fin_lis_time += test_time_lis; // Dodajemy czas tej iteracji do ogólnego czasu
+      // cout << "LINKED LIST ADD FIRST: " << endl
+      cout << fin_lis_time << endl;
+
+      long long fin_dob_time = 0;
+      long long test_time_dob = 0;
+      vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
+      for (int i = 0; i < 10; i++)
+      {
+         auto start2 = high_resolution_clock::now();
+         doubly[i]->add_first(1); // Dodajemy element na początek
+         auto stop2 = high_resolution_clock::now();
+         test_time_dob += duration_cast<nanoseconds>(stop2 - start2).count();
+      }
+      fin_dob_time += test_time_dob; // Dodajemy czas tej iteracji do ogólnego czasu
+      // cout << "DOUBLY LINKED ADD FIRST: " << endl;
+      cout << fin_dob_time << endl;
+
       k += 5000;
    } while (k <= 110000);
-
-   /*
-   cout << endl;
-
-long long fin_arr_time2 = 0;
-long long fin_lis_time2 = 0;
-long long fin_dob_time2 = 0;
-long long test_time_arr2 = 0;
-long long test_time_lis2 = 0;
-long long test_time_dob2 = 0;
-for (int j = 0; j < 10; j++)
-{
-vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
-vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
-vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
-for (int i = 0; i < 10; i++)
-{
-auto start = high_resolution_clock::now();
-arrays[i]->add_at(1, 5000); // Dodajemy element na początek
-auto stop = high_resolution_clock::now();
-test_time_arr2 += duration_cast<nanoseconds>(stop - start).count();
-
-auto start1 = high_resolution_clock::now();
-lists[i]->add_at(1, 5000); // Dodajemy element na początek
-auto stop1 = high_resolution_clock::now();
-test_time_lis2 += duration_cast<nanoseconds>(stop1 - start1).count();
-
-auto start2 = high_resolution_clock::now();
-doubly[i]->add_at(1, 5000); // Dodajemy element na początek
-auto stop2 = high_resolution_clock::now();
-test_time_dob2 += duration_cast<nanoseconds>(stop2 - start2).count();
-}
-}
-fin_dob_time2 += test_time_dob2; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_arr_time2 += test_time_arr2; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_lis_time2 += test_time_lis2; // Dodajemy czas tej iteracji do ogólnego czasu
-
-// Wyświetlamy całkowity czas
-cout << "DYNAMIC ARRAY ADD AT: " << fin_arr_time2 << " nanoseconds" << endl;
-cout << "LINKED LIST ADD AT: " << fin_lis_time2 << " nanoseconds" << endl;
-cout << "DOUBLY LINKED ADD AT: " << fin_dob_time2 << " nanoseconds" << endl;
-
-cout << endl;
-long long fin_arr_time3 = 0;
-long long fin_lis_time3 = 0;
-long long fin_dob_time3 = 0;
-long long test_time_arr3 = 0;
-long long test_time_lis3 = 0;
-long long test_time_dob3 = 0;
-for (int j = 0; j < 10; j++)
-{
-vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
-vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
-vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
-for (int i = 0; i < 10; i++)
-{
-auto start = high_resolution_clock::now();
-arrays[i]->pop_first(); // Dodajemy element na początek
-auto stop = high_resolution_clock::now();
-test_time_arr3 += duration_cast<nanoseconds>(stop - start).count();
-
-auto start1 = high_resolution_clock::now();
-lists[i]->pop_first(); // Dodajemy element na początek
-auto stop1 = high_resolution_clock::now();
-test_time_lis3 += duration_cast<nanoseconds>(stop1 - start1).count();
-
-auto start2 = high_resolution_clock::now();
-doubly[i]->pop_first(); // Dodajemy element na początek
-auto stop2 = high_resolution_clock::now();
-test_time_dob3 += duration_cast<nanoseconds>(stop2 - start2).count();
-}
-}
-fin_dob_time3 += test_time_dob3; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_arr_time3 += test_time_arr3; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_lis_time3 += test_time_lis3; // Dodajemy czas tej iteracji do ogólnego czasu
-
-// Wyświetlamy całkowity czas
-cout << "DYNAMIC ARRAY POP FIRST: " << fin_arr_time3 << " nanoseconds" << endl;
-cout << "LINKED LIST POP FIRST: " << fin_lis_time3 << " nanoseconds" << endl;
-cout << "DOUBLY LINKED POP FIRST: " << fin_dob_time3 << " nanoseconds" << endl;
-
-cout << endl;
-
-long long fin_arr_timeb4 = 0;
-long long fin_lis_timeb4 = 0;
-long long fin_dob_timeb4 = 0;
-long long test_time_arrb4 = 0;
-long long test_time_lisb4 = 0;
-long long test_time_dobb4 = 0;
-for (int j = 0; j < 10; j++)
-{
-vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
-vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
-vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
-for (int i = 0; i < 10; i++)
-{
-auto start = high_resolution_clock::now();
-arrays[i]->pop_back(); // Dodajemy element na początek
-auto stop = high_resolution_clock::now();
-test_time_arrb4 += duration_cast<nanoseconds>(stop - start).count();
-
-auto start1 = high_resolution_clock::now();
-lists[i]->pop_back(); // Dodajemy element na początek
-auto stop1 = high_resolution_clock::now();
-test_time_lisb4 += duration_cast<nanoseconds>(stop1 - start1).count();
-
-auto start2 = high_resolution_clock::now();
-doubly[i]->pop_back(); // Dodajemy element na początek
-auto stop2 = high_resolution_clock::now();
-test_time_dobb4 += duration_cast<nanoseconds>(stop2 - start2).count();
-}
-}
-fin_dob_timeb4 += test_time_dobb4; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_arr_timeb4 += test_time_arrb4; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_lis_timeb4 += test_time_lisb4; // Dodajemy czas tej iteracji do ogólnego czasu
-
-// Wyświetlamy całkowity czas
-cout << "DYNAMIC ARRAY POP BACK: " << fin_arr_timeb4 << " nanoseconds" << endl;
-cout << "LINKED LIST POP BACK: " << fin_lis_timeb4 << " nanoseconds" << endl;
-cout << "DOUBLY LINKED POP BACK: " << fin_dob_timeb4 << " nanoseconds" << endl;
-
-cout << endl;
-
-long long fin_arr_time25 = 0;
-long long fin_lis_time25 = 0;
-long long fin_dob_time25 = 0;
-long long test_time_arr25 = 0;
-long long test_time_lis25 = 0;
-long long test_time_dob25 = 0;
-for (int j = 0; j < 10; j++)
-{
-vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
-vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
-vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
-for (int i = 0; i < 10; i++)
-{
-auto start = high_resolution_clock::now();
-arrays[i]->pop_at(5000); // Dodajemy element na początek
-auto stop = high_resolution_clock::now();
-test_time_arr25 += duration_cast<nanoseconds>(stop - start).count();
-
-auto start1 = high_resolution_clock::now();
-lists[i]->pop_at(5000); // Dodajemy element na początek
-auto stop1 = high_resolution_clock::now();
-test_time_lis25 += duration_cast<nanoseconds>(stop1 - start1).count();
-
-auto start2 = high_resolution_clock::now();
-doubly[i]->pop_at(5000); // Dodajemy element na początek
-auto stop2 = high_resolution_clock::now();
-test_time_dob25 += duration_cast<nanoseconds>(stop2 - start2).count();
-}
-}
-fin_dob_time25 += test_time_dob25; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_arr_time25 += test_time_arr25; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_lis_time25 += test_time_lis25; // Dodajemy czas tej iteracji do ogólnego czasu
-
-// Wyświetlamy całkowity czas
-cout << "DYNAMIC ARRAY POP AT: " << fin_arr_time25 << " nanoseconds" << endl;
-cout << "LINKED LIST POP AT: " << fin_lis_time25 << " nanoseconds" << endl;
-cout << "DOUBLY LINKED POP AT: " << fin_dob_time25 << " nanoseconds" << endl;
-cout << endl;
-
-
-
-
-long long fin_arr_time26 = 0;
-long long fin_lis_time26 = 0;
-long long fin_dob_time26 = 0;
-long long test_time_arr26 = 0;
-long long test_time_lis26 = 0;
-long long test_time_dob26 = 0;
-for (int j = 0; j < 10; j++)
-{
-vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
-vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
-vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
-for (int i = 0; i < 10; i++)
-{
-auto start = high_resolution_clock::now();
-arrays[i]->search(37); // Dodajemy element na początek
-auto stop = high_resolution_clock::now();
-test_time_arr26 += duration_cast<nanoseconds>(stop - start).count();
-
-auto start1 = high_resolution_clock::now();
-lists[i]->search(37); // Dodajemy element na początek
-auto stop1 = high_resolution_clock::now();
-test_time_lis26 += duration_cast<nanoseconds>(stop1 - start1).count();
-
-auto start2 = high_resolution_clock::now();
-doubly[i]->search(37); // Dodajemy element na początek
-auto stop2 = high_resolution_clock::now();
-test_time_dob26 += duration_cast<nanoseconds>(stop2 - start2).count();
-}
-}
-fin_dob_time26 += test_time_dob26; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_arr_time26 += test_time_arr26; // Dodajemy czas tej iteracji do ogólnego czasu
-fin_lis_time26 += test_time_lis26; // Dodajemy czas tej iteracji do ogólnego czasu
-
-// Wyświetlamy całkowity czas
-cout << "DYNAMIC ARRAY SEARCH: " << fin_arr_time26 << " nanoseconds" << endl;
-cout << "LINKED LIST SEARCH: " << fin_lis_time26 << " nanoseconds" << endl;
-cout << "DOUBLY LINKED SEARCH: " << fin_dob_time26 << " nanoseconds" << endl;
 */
+
+   do
+   {
+      load_data(commonData, k, "data.txt");
+
+      long long fin_arr_time = 0;
+      long long test_time_arr = 0;
+      vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
+      for (int i = 0; i < 10; i++)
+      {
+         auto start = high_resolution_clock::now();
+         arrays[i]->add_back(1); // Dodajemy element na koniec
+         auto stop = high_resolution_clock::now();
+         test_time_arr += duration_cast<nanoseconds>(stop - start).count();
+      }
+      fin_arr_time += test_time_arr;
+      cout << fin_arr_time << endl;
+
+      /*
+      long long fin_lis_time = 0;
+      long long test_time_lis = 0;
+      vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
+      for (int i = 0; i < 10; i++)
+      {
+       auto start1 = high_resolution_clock::now();
+       lists[i]->add_back(1); // Dodajemy element na koniec
+       auto stop1 = high_resolution_clock::now();
+       test_time_lis += duration_cast<nanoseconds>(stop1 - start1).count();
+    }
+    fin_lis_time += test_time_lis;
+    cout << fin_lis_time << endl;
+
+
+    long long fin_dob_time = 0;
+    long long test_time_dob = 0;
+    vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
+    for (int i = 0; i < 10; i++)
+    {
+       auto start2 = high_resolution_clock::now();
+       doubly[i]->add_back(1);
+       auto stop2 = high_resolution_clock::now();
+       test_time_dob += duration_cast<nanoseconds>(stop2 - start2).count();
+    }
+    fin_dob_time += test_time_dob;
+    cout << fin_dob_time << endl;
+
+    */
+      k += 5000;
+   } while (k <= 110000);
+   /*
+
+     do
+     {
+        load_data(commonData, k, "data.txt");
+
+        long long test_time_arr2 = 0;
+        long long fin_arr_time2 = 0;
+        vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start = high_resolution_clock::now();
+           arrays[i]->add_at(1, k / 2); // Dodajemy element na początek
+           auto stop = high_resolution_clock::now();
+           test_time_arr2 += duration_cast<nanoseconds>(stop - start).count();
+        }
+        fin_arr_time2 += test_time_arr2; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DYNAMIC ARRAY ADD AT: " << endl;
+        cout << fin_arr_time2 << endl;
+
+        long long fin_lis_time2 = 0;
+        long long test_time_lis2 = 0;
+        vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start1 = high_resolution_clock::now();
+           lists[i]->add_at(1, k / 2); // Dodajemy element na początek
+           auto stop1 = high_resolution_clock::now();
+           test_time_lis2 += duration_cast<nanoseconds>(stop1 - start1).count();
+        }
+        fin_lis_time2 += test_time_lis2; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "LINKED LIST ADD AT: " << endl;
+        cout << fin_lis_time2 << endl;
+
+        long long fin_dob_time2 = 0;
+        long long test_time_dob2 = 0;
+        vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start2 = high_resolution_clock::now();
+           doubly[i]->add_at(1, k / 2); // Dodajemy element na początek
+           auto stop2 = high_resolution_clock::now();
+           test_time_dob2 += duration_cast<nanoseconds>(stop2 - start2).count();
+        }
+        fin_dob_time2 += test_time_dob2; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DOUBLY LINKED ADD AT: " << endl;
+        cout << fin_dob_time2 << endl;
+
+        k += 5000;
+     } while (k <= 110000);
+
+
+     do
+     {
+        load_data(commonData, k, "data.txt");
+
+        long long fin_arr_time3 = 0;
+        long long test_time_arr3 = 0;
+        vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start = high_resolution_clock::now();
+           arrays[i]->pop_first(); // Dodajemy element na początek
+           auto stop = high_resolution_clock::now();
+           test_time_arr3 += duration_cast<nanoseconds>(stop - start).count();
+        }
+        fin_arr_time3 += test_time_arr3; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DYNAMIC ARRAY POP FIRST: " << endl;
+        cout << fin_arr_time3 << endl;
+
+
+
+         long long fin_lis_time3 = 0;
+         long long test_time_lis3 = 0;
+         vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
+         for (int i = 0; i < 10; i++)
+         {
+            auto start1 = high_resolution_clock::now();
+            lists[i]->pop_first(); // Dodajemy element na początek
+            auto stop1 = high_resolution_clock::now();
+            test_time_lis3 += duration_cast<nanoseconds>(stop1 - start1).count();
+         }
+         fin_lis_time3 += test_time_lis3; // Dodajemy czas tej iteracji do ogólnego czasu
+         // cout << "LINKED LIST POP FIRST: " << endl;
+         cout << fin_lis_time3 << endl;
+
+        long long fin_dob_time3 = 0;
+        long long test_time_dob3 = 0;
+        vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start2 = high_resolution_clock::now();
+           doubly[i]->pop_first(); // Dodajemy element na początek
+           auto stop2 = high_resolution_clock::now();
+           test_time_dob3 += duration_cast<nanoseconds>(stop2 - start2).count();
+        }
+        fin_dob_time3 += test_time_dob3; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DOUBLY LINKED POP FIRST: " << endl;
+        cout << fin_dob_time3 << endl;
+        k += 5000;
+     } while (k <= 110000);
+
+
+     do
+     {
+        load_data(commonData, k, "data.txt");
+
+        long long fin_arr_timeb4 = 0;
+        long long test_time_arrb4 = 0;
+        vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start = high_resolution_clock::now();
+           arrays[i]->pop_back(); // Dodajemy element na początek
+           auto stop = high_resolution_clock::now();
+           test_time_arrb4 += duration_cast<nanoseconds>(stop - start).count();
+        }
+        fin_arr_timeb4 += test_time_arrb4; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DYNAMIC ARRAY POP BACK: " << endl;
+        cout << fin_arr_timeb4 << endl;
+
+        long long test_time_lisb4 = 0;
+        long long fin_lis_timeb4 = 0;
+        vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start1 = high_resolution_clock::now();
+           lists[i]->pop_back(); // Dodajemy element na początek
+           auto stop1 = high_resolution_clock::now();
+           test_time_lisb4 += duration_cast<nanoseconds>(stop1 - start1).count();
+        }
+        fin_lis_timeb4 += test_time_lisb4; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "LINKED LIST POP BACK: " << endl;
+        cout << fin_lis_timeb4 << endl;
+
+        long long fin_dob_timeb4 = 0;
+        long long test_time_dobb4 = 0;
+        vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start2 = high_resolution_clock::now();
+           doubly[i]->pop_back(); // Dodajemy element na początek
+           auto stop2 = high_resolution_clock::now();
+           test_time_dobb4 += duration_cast<nanoseconds>(stop2 - start2).count();
+        }
+        fin_dob_timeb4 += test_time_dobb4; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DOUBLY LINKED POP BACK: " << endl;
+        cout << fin_dob_timeb4 << endl;
+
+        k += 5000;
+     } while (k <= 110000);
+
+
+     do
+     {
+        load_data(commonData, k, "data.txt");
+
+
+        long long fin_arr_time25 = 0;
+        long long test_time_arr25 = 0;
+        vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start = high_resolution_clock::now();
+           arrays[i]->pop_at(k / 2); // Dodajemy element na początek
+           auto stop = high_resolution_clock::now();
+           test_time_arr25 += duration_cast<nanoseconds>(stop - start).count();
+        }
+        fin_arr_time25 += test_time_arr25; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DYNAMIC ARRAY POP AT: " << endl;
+        cout << fin_arr_time25 << endl;
+
+
+         long long fin_lis_time25 = 0;
+         long long test_time_lis25 = 0;
+         vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
+         for (int i = 0; i < 10; i++)
+         {
+            auto start1 = high_resolution_clock::now();
+            lists[i]->pop_at(k / 2); // Dodajemy element na początek
+            auto stop1 = high_resolution_clock::now();
+            test_time_lis25 += duration_cast<nanoseconds>(stop1 - start1).count();
+         }
+         fin_lis_time25 += test_time_lis25; // Dodajemy czas tej iteracji do ogólnego czasu
+         // cout << "LINKED LIST POP AT: " << endl;
+         cout << fin_lis_time25 << endl;
+
+
+
+        long long fin_dob_time25 = 0;
+        long long test_time_dob25 = 0;
+        vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
+        for (int i = 0; i < 10; i++)
+        {
+           auto start2 = high_resolution_clock::now();
+           doubly[i]->pop_at(k / 2); // Dodajemy element na początek
+           auto stop2 = high_resolution_clock::now();
+           test_time_dob25 += duration_cast<nanoseconds>(stop2 - start2).count();
+        }
+        fin_dob_time25 += test_time_dob25; // Dodajemy czas tej iteracji do ogólnego czasu
+        // cout << "DOUBLY LINKED POP AT: " << endl;
+        cout << fin_dob_time25 << endl;
+
+
+        k += 5000;
+     } while (k <= 110000);
+
+
+
+        do
+        {
+           long long fin_dob_time26 = 0;
+           long long fin_lis_time26 = 0;
+           long long fin_arr_time26 = 0;
+           load_data(commonData, k, "data.txt");
+
+           long long test_time_arr26 = 0;
+           vector<unique_ptr<DynamicArray>> arrays = set_array(commonData);
+           for (int i = 0; i < 10; i++)
+           {
+              auto start = high_resolution_clock::now();
+              arrays[i]->search(37);
+              auto stop = high_resolution_clock::now();
+              test_time_arr26 += duration_cast<nanoseconds>(stop - start).count();
+           }
+           fin_arr_time26 += test_time_arr26;
+           // cout << "DYNAMIC ARRAY SEARCH: " << endl;
+           cout << test_time_arr26 << endl;
+
+           long long test_time_lis26 = 0;
+           vector<unique_ptr<LinkedList>> lists = set_linked_list(commonData);
+           for (int i = 0; i < 10; i++)
+           {
+              auto start = high_resolution_clock::now();
+              lists[i]->search(37);
+              auto stop = high_resolution_clock::now();
+              test_time_lis26 += duration_cast<nanoseconds>(stop - start).count();
+           }
+           fin_lis_time26 += test_time_lis26;
+           // cout << "LINKED LIST SEARCH: " << endl;
+           cout << test_time_lis26 << endl;
+
+           long long test_time_dob26 = 0;
+           vector<unique_ptr<DoublyLinkedList>> doubly = set_doubly_linked_list(commonData);
+           for (int i = 0; i < 10; i++)
+           {
+              auto start = high_resolution_clock::now();
+              doubly[i]->search(37);
+              auto stop = high_resolution_clock::now();
+              test_time_dob26 += duration_cast<nanoseconds>(stop - start).count();
+           }
+           fin_dob_time26 += test_time_dob26;
+           // cout << "DOUBLY LINKED LIST SEARCH: " << endl;
+           cout << test_time_dob26 << endl;
+
+           k += 5000;
+        } while (k <= 110000);
+
+        */
 }

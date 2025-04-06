@@ -1,5 +1,6 @@
 #include "DoublyLinkedList.h"
 #include <iostream>
+#include <vector>
 
 using std::cout;
 using std::endl;
@@ -8,26 +9,24 @@ DoublyLinkedList::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
 
 DoublyLinkedList::~DoublyLinkedList()
 {
-    Dnode* temp;
-    while(head)
+    Dnode *temp;
+    while (head)
     {
         temp = head;
         head = head->next;
         delete temp;
     }
-    
 }
 
 bool DoublyLinkedList::is_empty()
 {
-   return head == nullptr;
+    return head == nullptr;
 }
-
 
 void DoublyLinkedList::show()
 {
-    Dnode* temp = head;
-    while(temp != nullptr)
+    Dnode *temp = head;
+    while (temp != nullptr)
     {
         cout << temp->data << "<->";
         temp = temp->next;
@@ -35,10 +34,9 @@ void DoublyLinkedList::show()
     cout << "NULL" << endl;
 }
 
-
 void DoublyLinkedList::add_first(int value)
 {
-    Dnode* newDnode = new Dnode;
+    Dnode *newDnode = new Dnode;
     newDnode->data = value;
     newDnode->next = head;
     newDnode->prev = nullptr;
@@ -51,15 +49,13 @@ void DoublyLinkedList::add_first(int value)
     {
         head->prev = newDnode;
     }
-    
+
     head = newDnode;
 }
 
-
-
 void DoublyLinkedList::add_back(int value)
 {
-    Dnode* newDnode = new Dnode;
+    Dnode *newDnode = new Dnode;
     newDnode->data = value;
     newDnode->next = nullptr;
 
@@ -74,9 +70,7 @@ void DoublyLinkedList::add_back(int value)
         tail->next = newDnode;
         tail = newDnode;
     }
-    
 }
-
 
 void DoublyLinkedList::pop_first()
 {
@@ -85,20 +79,18 @@ void DoublyLinkedList::pop_first()
         return;
     }
 
-    if(head == tail)
+    if (head == tail)
     {
         delete head;
         head = tail = nullptr;
         return;
     }
 
-    Dnode* temp = head;
+    Dnode *temp = head;
     head = head->next;
     head->prev = nullptr;
     delete temp;
-    
 }
-
 
 void DoublyLinkedList::pop_back()
 {
@@ -107,40 +99,39 @@ void DoublyLinkedList::pop_back()
         return;
     }
 
-    if(head == tail)
+    if (head == tail)
     {
         delete head;
         head = tail = nullptr;
         return;
     }
 
-    Dnode* temp = tail->prev;
+    Dnode *temp = tail->prev;
     temp->next = nullptr;
     delete tail;
     tail = temp;
-    
 }
 
 void DoublyLinkedList::add_at(int value, int key)
 {
-    if(key < 0)
+    if (key < 0)
     {
         return;
     }
-    
-    if(key == 1)
+
+    if (key == 1)
     {
         add_first(value);
         return;
     }
-    
-    Dnode* temp = head;
-    for (int i = 1; i < key-1; i++)
+
+    Dnode *temp = head;
+    for (int i = 1; i < key - 1; i++)
     {
         temp = temp->next;
     }
 
-    Dnode* newNode = new Dnode();
+    Dnode *newNode = new Dnode();
     newNode->data = value;
     if (temp->next)
     {
@@ -149,51 +140,46 @@ void DoublyLinkedList::add_at(int value, int key)
     newNode->next = temp->next;
     temp->next = newNode;
     newNode->prev = temp;
-    
-    
 }
 
 void DoublyLinkedList::pop_at(int key)
 {
-    if(is_empty())
+    if (is_empty())
     {
         return;
     }
 
-    if(key < 0)
+    if (key < 0)
     {
         return;
     }
 
     if (key == 1)
     {
-      pop_first();
-      return;
+        pop_first();
+        return;
     }
 
-     
-    Dnode* temp = head;
+    Dnode *temp = head;
     int i = 1;
 
-    while (temp != nullptr && i < key - 1) {
+    while (temp != nullptr && i < key - 1)
+    {
         temp = temp->next;
         i++;
     }
-    Dnode* toDelete = temp->next;
+    Dnode *toDelete = temp->next;
     temp->next = toDelete->next;
     if (toDelete->next)
     {
         toDelete->next->prev = temp;
     }
     delete toDelete;
-    
-    
 }
-
 
 void DoublyLinkedList::search(int value)
 {
-    Dnode* temp = head;
+    Dnode *temp = head;
     std::vector<int> positions;
     int index = 0;
 
@@ -207,14 +193,19 @@ void DoublyLinkedList::search(int value)
         index++;
     }
 
-    if (positions.empty()) {
-        cout << "Value " << value << " not found in this list.\n";
+    if (positions.empty())
+    {
+        // cout << "Value " << value << " not found in this list.\n";
     }
-    else {
+    else
+    {
+        /*
         cout << "Value " << value << " found at positions:\n";
-        for (int pos : positions) {
+        for (int pos : positions)
+        {
             cout << pos << " ";
         }
         cout << std::endl;
+        */
     }
 }
