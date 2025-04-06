@@ -1,6 +1,6 @@
 #include "DynamicArray.h"
 #include <iostream>
-
+#include <vector>
 DynamicArray::DynamicArray() : capacity(0), size(0), array(nullptr) {}
 
 /*
