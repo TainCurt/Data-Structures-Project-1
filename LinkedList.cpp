@@ -1,5 +1,6 @@
 #include "LinkedList.h"
 #include <iostream>
+#include <vector>
 LinkedList::LinkedList() : head(nullptr), tail(nullptr) {}
 
 LinkedList::~LinkedList()
