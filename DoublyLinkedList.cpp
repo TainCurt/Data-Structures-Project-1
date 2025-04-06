@@ -1,5 +1,6 @@
 #include "DoublyLinkedList.h"
 #include <iostream>
+#include <vector>
 
 using std::cout;
 using std::endl;
@@ -215,6 +216,6 @@ void DoublyLinkedList::search(int value)
         for (int pos : positions) {
             cout << pos << " ";
         }
-        cout << std::endl;
+        cout << endl;
     }
 }
