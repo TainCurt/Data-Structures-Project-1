@@ -1,7 +1,8 @@
 #include "DoublyLinkedList.h"
 #include <iostream>
 #include <vector>
-
+#include <fstream>
+#include <sstream>
 using std::cout;
 using std::endl;
 
