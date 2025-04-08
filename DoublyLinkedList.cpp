@@ -209,3 +209,43 @@ void DoublyLinkedList::search(int value)
         */
     }
 }
+
+void DoublyLinkedList::load() {
+    string path;
+    cout << "Insert file name: ";
+    cin >> path;
+    path += ".txt";
+    ifstream file(path);
+    string data;
+    if (file.is_open()) {
+        getline(file, data);
+        stringstream ss(data);
+        string val;
+
+        while (getline(ss, val, ',')) {
+            int number = stoi(val);
+            this->add_back(number);
+        }
+    }
+    else { cout << "Invalid file\n"; }
+}
+void DoublyLinkedList::save() {
+    string path;
+    cout << "Insert file name: ";
+    cin >> path;
+    path += ".txt";
+    ofstream file(path);
+    if (file.is_open()) {
+        Dnode* temp = head;
+        while (temp->next != nullptr) {
+            file << temp->data;
+            if (temp->next != nullptr) {
+                file << ",";
+            }
+            temp = temp->next;
+        }
+        file.close();
+        cout << "Data saved\n";
+    }
+    else { cout << "Invalid file\n"; }
+}
