@@ -23,4 +23,6 @@ class DynamicArray
     void doubleArray();
     void search(int value);
     void show();
+    void load();
+    void save();
 };
