@@ -1,6 +1,9 @@
 #include "DynamicArray.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -142,4 +145,43 @@ void DynamicArray::search(int value)
         // }
         // cout << endl;
     }
+}
+
+void DynamicArray::load() {
+    string path;
+    cout << "Insert file name: ";
+    cin >> path;
+    path += ".txt";
+    ifstream file(path);
+    string data;
+    if (file.is_open()) {
+        getline(file, data);
+        stringstream ss(data);
+        string val;
+
+        while (getline(ss, val, ',')) {
+            int number = stoi(val);
+            this->add_back(number);
+        }
+    }
+    else { cout << "Invalid file\n"; }
+}
+
+void DynamicArray::save() {
+    string path;
+    cout << "Insert file name: ";
+    cin >> path;
+    path += ".txt";
+    ofstream file(path);
+    if (file.is_open()) {
+        for (int i = 0; i < this->getsize(); ++i) {
+            if (i > 0) {
+                file << ",";
+            }
+            file << array[i];
+        }
+        file.close();
+        cout << "Data saved\n";
+    }
+    else { cout << "Invalid file\n"; }
 }
