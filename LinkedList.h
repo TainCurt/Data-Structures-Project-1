@@ -27,5 +27,6 @@ class LinkedList
     bool is_empty();
     void search(int value);
     void show();
-
+    void load();
+    void save();
 };
