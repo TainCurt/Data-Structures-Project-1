@@ -1,4 +1,4 @@
-#include <iostream>
+include <iostream>
 #include <chrono>
 #include <numeric>
 #include <vector>
@@ -122,5 +122,4 @@ void menu() {
         }
     }
 }
-
 
